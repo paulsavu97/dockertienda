@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <!-- fontawesome icons -->
+            <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+            integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+            />
+            <!-- bootstrap -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <!-- custom css -->
+            <link rel="stylesheet" href="/css/app_styles.css" />
+        {% endblock %}
+
+        {% block javascripts %}
+
+            {{ encore_entry_script_tags('app') }}    
+            <!-- jquery -->
+            <script src="/js/jquery-3.6.0.js"></script>  
+            <!-- bootstrap js -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+            <!-- isotope js -->
+            <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+            <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-mZnHTkLm0tXs+Rz+JG71tQUPh3vKvQNH1QzeSvxwgp5DhxvHI9p4E4lM+J1M90xnltqLoS3w2jqLcS5x5AmP3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-gBXM+u2FVhTNSqqUlEJz6hDzdWQOe6yLDM1e74X1vO8F3Gc/qZSSx6ZGMGcIGTT8W5p+bN5Cysyf9X77gC8W5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            -->
+            <!-- custom js -->
+            <script src="/js/app_script.js"></script>
+        {% endblock %}
+    </head>
+    <body>  
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,212 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario{% endblock %}
+
+{% block body %}
+    {{ include('comunes/_header.html.twig') }}
+    <h1>Usuario</h1>
+     <section style="background-color: #eee">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <img
+                  src="{{ asset('/images/' ~  app.user.photo) }}"
+                  onerror='this.onerror = null; this.src="/images/app/default_Profile.svg"'
+                  alt="avatar"
+                  class="rounded-circle img-fluid my-3"
+                  style="width: 150px; height: 150px"
+                />
+                {% if app.user.roles['0'] is same as('ROLE_USER') %}
+                <p class="text-muted my-2">Usuario Registrado</p>
+                {% else %}
+                <p class="text-muted my-2">Usuario Administrador</p>
+                {% endif %}
+                <h4 class="mb-3">{{ app.user.Nombre }} {{ app.user.Apellidos }}</h4>
+                <div class="d-flex justify-content-center mb-2">
+                  <button type="button" class="btn outline-btn">Log Out</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <h4 class="mb-5 mt-2">Datos Personales</h4>
+                  <div class="col-sm-3">
+                    <p class="mb-0">Nombre</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ app.user.Nombre }}</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Apellidos</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ app.user.Apellidos }}</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Contraseña</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">*********</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ app.user.email }}</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Fecha de nacimiento</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">4 NOV 1994</p>
+                  </div>
+                </div>
+                <button type="button" class="btn pink-btn mt-4">
+                  Editar Datos
+                </button>
+              </div>
+            </div>
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <h4 class="mb-5 mt-2">Datos de Pago</h4>
+                  <div class="col-sm-3">
+                    <p class="mb-0">Número de tarjeta</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">no hay datos</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Titular</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">no hay datos</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Código de seguridad</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">no hay datos</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Dirección</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">no hay datos</p>
+                  </div>
+                </div>
+
+                <button type="button" class="btn pink-btn mt-4">
+                  Editar Datos
+                </button>
+              </div>
+            </div>
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <h4 class="mb-5 mt-2">Historial Compras</h4>
+                  <table class="table">
+                    {% for pedido in user.pedidos %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td scope="col"> <p>Nº de pedido: {{ pedido.id }}</p></td><td></td><td></td><td></td>
+                                    <td scope="col" class="text-end "><p class="me-2">Fecha: {{ pedido.fecha|date('d-m-Y') }}</p></td>                                    
+                                </tr>
+                                <tr>
+                                <th scope="col"> Producto</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Unidades</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for compra in pedido.compras %}
+                                <tr>
+                                    <th scope="row">
+                                        <div class="d-flex align-items-center">
+                                            <img
+                                                src="{{ asset('/images/' ~ compra.idProducto.imagen) }}"
+                                                class="img-fluid rounded-3"
+                                                style="width: 70px"
+                                                alt="Book"
+                                            />
+                                            <div class="flex-column ms-4">
+                                                <p class="mb-2">{{ compra.idProducto.nombre }}</p>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="align-middle">
+                                        <p class="mb-0" style="font-weight: 500">{{ compra.idProducto.id }}</p>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="d-flex flex-row">
+                                        
+                                        <input
+                                            id="form1"
+                                            min="0"
+                                            name="quantity"
+                                            value="2"
+                                            type="number"
+                                            class="form-control form-control-sm"
+                                            style="width: 50px"
+                                        />
+                                        
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <p class="mb-0" style="font-weight: 500">{{compra.idProducto.precio}}</p>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="d-grid gap-2 my-2">
+                                            <a href="{{ path('app_user_devolver', {'compra':compra.id}) }}" class="btn pink-btn">Devolver</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4" class="text-center py-4 fst-italic">Los productos de este pedido fueron devueltos</td>
+                                </tr>
+                            {% endfor %} 
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>No has realizado aún ningún pedido</p>
+                    {% endfor %} 
+                    </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

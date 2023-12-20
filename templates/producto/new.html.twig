@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Producto{% endblock %}
+
+{% block body %}
+
+<div class="container-xxl position-relative bg-white d-flex p-0">
+{{ include('comunes/_sidebar-admin.html.twig') }}
+    <div class="content mt-5">
+        <div class="row mt-5">
+            <div class="col-md-10">
+                {{ include('producto/_form.html.twig') }}
+                <div class="text-end">
+                    <a class="text-end" href="{{ path('app_homepage_index') }}">Ir a Inicio</a>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}

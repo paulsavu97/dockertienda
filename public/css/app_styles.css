@@ -1,0 +1,379 @@
+/***** INDICE *****/
+/*--------------*/
+/*
+  1. Global (estilos para todas las paginas)
+  2. Header
+  3. Footer
+  4. Login/ Register
+  5. Homepage
+  6. Página Producto
+  7. Catálogo Productos
+  8. Página Admin
+  9. Página User Registrado 
+  10. About Us
+  --------------
+*/
+
+/***** 1.GLOBAL *****/
+/*-----------------*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Playfair+Display:ital,wght@1,600&display=swap");
+
+:root {
+  --lg-font: "Playfair Display", serif;
+  --sm-font: "Montserrat", sans-serif;
+  --pink: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--sm-font);
+}
+
+.title {
+  font-family: var(--lg-font);
+}
+
+/* buttons */
+
+.btn-primary:hover {
+  color: #fff !important;
+}
+
+.pink-btn {
+  background-color: var(--pink) !important;
+  color: #fff !important;
+  border-color: var(--pink) !important;
+  border-radius: 25px;
+}
+
+.outline-btn {
+  border-color: black !important;
+  border-radius: 25px !important;
+}
+
+.btn:not(.nav-btns button) {
+  background-color: #fff;
+  color: rgb(85, 85, 85);
+  padding: 10px 28px;
+  border-radius: 25px;
+  border: 1px solid rgb(85, 85, 85);
+}
+.btn:not(.nav-btns button):hover {
+  background-color: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+}
+
+.badge {
+  background-color: #3d7d33;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+}
+
+/* colors */
+.text-primary {
+  color: var(--pink) !important;
+}
+
+.bg-primary {
+  background-color: var(--pink) !important;
+}
+
+#pink {
+  color: var(--pink) !important;
+}
+
+a {
+  color: var(--pink) !important;
+}
+
+/***** 2. HEADER *****/
+/*------------------*/
+.navbar {
+  -webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand img {
+  width: 30px;
+}
+.navbar-brand span {
+  letter-spacing: 2px;
+  font-family: var(--lg-font);
+}
+.nav-link:hover {
+  color: var(--pink) !important;
+}
+.nav-item {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+}
+
+/* media queries */
+@media (min-width: 992px) {
+  .nav-item {
+    border-bottom: none;
+  }
+}
+
+/***** 3. FOOTER *****/
+/*------------------*/
+footer .brand {
+  font-family: var(--lg-font);
+  letter-spacing: 2px;
+}
+footer a {
+  -webkit-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: var(--pink) !important;
+}
+
+/***** 4. LOGIN *****/
+/*-----------------*/
+.login-btn {
+  background-color: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+  border-radius: 25px;
+}
+
+/***** 5. HOMEPAGE *****/
+/*--------------------*/
+#header {
+  background: url(../images/app/banner-img-1.jpg) top/cover no-repeat;
+}
+
+/* collection */
+.active-filter-btn {
+  background-color: var(--pink) !important;
+  color: #fff !important;
+  border-color: var(--pink) !important;
+}
+.filter-button-group .btn:hover {
+  color: #fff !important;
+}
+.collection-img span {
+  top: 20px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+/* special features */
+.special-img span {
+  top: 20px;
+  right: 20px;
+}
+.special-img img {
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.special-img:hover img {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* offers */
+#offers {
+  background: url(../images/app/offer_img.jpg) center/cover no-repeat;
+}
+#offers .row {
+  min-height: 60vh;
+}
+.offers-content span {
+  font-size: 28px;
+}
+.offers-content h2 {
+  font-size: 40px;
+  font-family: var(--lg-font);
+}
+.offers-content .btn {
+  border-color: transparent !important;
+}
+
+/*testimonials*/
+.testimonial-img {
+  width: 180px;
+}
+
+/* newsletter */
+#newsletter {
+  background-color: #d686c52a;
+}
+#newsletter p {
+  max-width: 600px;
+}
+#newsletter .input-group {
+  max-width: 500px;
+}
+#newsletter .form-control {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+#newsletter .btn {
+  background-color: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+}
+#newsletter .btn:hover {
+  background-color: #000;
+  border-color: #000;
+}
+
+/***** 6. PAGINA PRODUCTO *****/
+/*---------------------------*/
+.row {
+  justify-content: space-around;
+}
+
+.color-discount {
+  color: rgb(139, 41, 41);
+}
+
+/* -- SHOW (Product Detail Page) -- */
+
+.sidebar .navbar-admin .navbar-admin-nav .nav-admin-link i {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 40px;
+}
+
+.content .navbar-admin .sidebar-toggler,
+.content .navbar-admin .navbar-admin-nav .nav-admin-link i {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 40px;
+}
+
+@media (max-width: 575.98px) {
+  .content {
+    margin-left: 15px;
+  }
+}
+
+.input-noOutline {
+  width: 100%;
+  height: 65px;
+}
+
+.input-noOutline:focus {
+  box-shadow: none !important;
+  outline: none;
+}
+
+/***** 7. CATALOGO PRODUCTOS *****/
+/*---------------------------*/
+/* hide radio */
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* image style */
+[type="radio"] + img {
+  cursor: pointer;
+  width: 2.5rem;
+  border-radius: 3px;
+}
+
+/* checked style */
+[type="radio"]:checked + img {
+  background-color: #e2e2e2;
+}
+
+/***** 8. PAGINA ADMIN *****/
+/*------------------------*/
+/* layout */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  height: 100vh;
+  overflow-y: auto;
+  background: #f3f6f9;
+  transition: 0.5s;
+  z-index: 999;
+}
+
+.content {
+  margin-left: 250px;
+  min-height: 100vh;
+  background: #ffffff;
+  transition: 0.5s;
+}
+@media (min-width: 992px) {
+  .sidebar {
+    margin-left: 0;
+  }
+
+  .content {
+    width: calc(100% - 250px);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    margin-left: -250px;
+  }
+
+  .content {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* sidebar*/
+.sidebar .navbar-admin .navbar-nav .nav-link {
+  padding: 9px 20px;
+  color: black;
+  font-weight: 500;
+  border-left: solid #f3f6f9;
+  border-radius: 0 30px 30px 0;
+  outline: none;
+}
+
+.sidebar .navbar-admin .navbar-nav .nav-link:hover,
+.sidebar .navbar-admin .navbar-nav .nav-link.active {
+  color: var(--pink);
+  background: #ffffff;
+  border-color: var(--pink);
+}
+
+/***** 10. ABOUT US *****/
+/*-----------------*/
+.about-header {
+  margin-top: 3rem;
+  margin-bottom: 6rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/app/about.png) center center no-repeat;
+  background-size: cover;
+  height: 20rem;
+  font-family: var(--lg-font);
+}
+
+#about-us-container-2 {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}

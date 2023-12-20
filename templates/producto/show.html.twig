@@ -1,0 +1,341 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Producto
+{% endblock %}
+
+{% block body %}
+	{{ include('comunes/_header.html.twig') }}
+
+	<!-- *** PRODUCTO *** -->
+	<h1>Producto</h1>
+
+	<div class="container my-5 pb-5">
+		<div class="row d-flex justify-content-center mt-5">
+			<div class="col-md-10">
+				<div class="card border-0">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="images p-3">
+								<div class="text-center p-4">
+									<img id="main-image" src="{{ asset('/images/' ~ producto.imagen) }}" 
+									onerror='this.onerror = null; this.src="/images/app/default_Image.png"'
+									width="400"/>
+								</div>
+								<div class="thumbnail text-center">
+									<img onclick="change_image(this)" src="{{ asset('/images/lapices.png') }}" width="95">
+									<img onclick="change_image(this)" src="{{ asset('/images/' ~ producto.imagen) }}" width="95">
+									<img onclick="change_image(this)" src="{{ asset('/images/acuarelas_02.png') }}" width="95">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="product p-4">
+								<div class="mt-4 mb-3">
+									<h5 class="h4">{{ producto.nombre }}</h5>
+									<span class="text-uppercase text-muted brand">Marca</span>
+									<div class="price d-flex flex-row align-items-center">
+										<span class="h5 py-3">€{{ producto.precio }}</span>
+										{% if producto.descuento %}
+										<div class="h6 ms-3 py-3 color-discount fw-bold">
+											<span>{{ producto.descuento }}%</span>
+											<span>OFF</span>
+										</div>
+										{% endif %}
+									</div>
+									<p class="pb-2">
+										<i class="fa fa-star text-warning"></i>
+										<i class="fa fa-star text-warning"></i>
+										<i class="fa fa-star text-warning"></i>
+										<i class="fa fa-star text-warning"></i>
+										<i class="fa fa-star text-secondary"></i>
+									</p>
+								</div>
+								<p>Categoria: Manualidades</p>
+								<h6 class="fw-bold">Detalles del producto:</h6>
+								<p class="text-truncate">{{ producto.descripcion }}</p>
+
+								<div class="d-flex flex-row mt-3">
+									<span class="pe-3 text-muted">Cantidad</span>
+									<input id="quantityInput" min="1" max="20" name="quantity" value="1" type="number" class="form-control form-control-sm" style="width: 50px"/>
+								</div>
+								<div class="sizes mt-4">
+
+									{% if is_granted('ROLE_ADMIN') %}
+										<a href="{{ path('app_producto_edit', {'id': producto.id}) }}" class="text-reset text-decoration-none">edit</a>
+										{{ include('producto/_delete_form.html.twig') }}
+									{% endif %}
+									<div class="cart mt-4 align-items-center">
+										<button id="botonAñadirCarrito" class="btn pink-btn text-uppercase mr-2 px-4">Añadir a la cesta</button>
+										<i class="fa fa-heart text-muted ps-3"></i>
+										<i class="fa fa-share-alt text-muted"></i>
+									</div>
+									<div id="path-to-controller-aniadir" data-href="{{ path('app_carrito_aniadirProducto', {'id': producto.id}) }}"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- *** BÚSQUEDAS RELACIONADAS *** -->
+		<section class="py-5">
+			<div class="container">
+				<div class="row  p-2 pb-3">
+					<h2>Busquedas relacionadas</h2>
+				</div>
+				<div class="collection-list mt-4 row gx-0 gy-3">
+					<div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
+						<div class="collection-img position-relative">
+							<img src="/images/producto1.png" class="w-100"/>
+						</div>
+						<div class="text-center">
+							<div class="rating mt-3">
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary" >
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary" >
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary" >
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary" >
+									<i class="fas fa-star"></i>
+								</span>
+							</div>
+							<p class="text-capitalize my-1">Cricut</p>
+							<span class="fw-bold">€ 75.95</span>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-4 col-xl-3 p-2 feat">
+						<div class="collection-img position-relative">
+							<img src="/images/producto2.png" class="w-100"/>
+						</div>
+						<div class="text-center">
+							<div class="rating mt-3">
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+							</div>
+							<p class="text-capitalize my-1">Kit para hacer velas</p>
+							<span class="fw-bold">€ 25.50</span>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-4 col-xl-3 p-2 new">
+						<div class="collection-img position-relative">
+							<img src="/images/producto3.png" class="w-100"/>
+
+						</div>
+						<div class="text-center">
+							<div class="rating mt-3">
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+							</div>
+							<p class="text-capitalize my-1">Perlas de mosaico</p>
+							<span class="fw-bold">€ 10.95</span>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
+						<div class="collection-img position-relative">
+							<img src="/images/producto4.png" class="w-100"/>
+						</div>
+						<div class="text-center">
+							<div class="rating mt-3">
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+								<span class="text-primary">
+									<i class="fas fa-star"></i>
+								</span>
+							</div>
+							<p class="text-capitalize my-1">cerámica</p>
+							<span class="fw-bold">€ 25.50</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- *** PPREGUNTAS *** -->
+
+			<div class="container my-5 py-5">
+				<div class="mb-5">
+					<h2>Preguntas de los usuarios</h2>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-12 ">
+						<div id="contenedor-preguntas" class="card">
+
+              				{# Imprime todas las PREGUNTAS del Producto #}
+							{% for pregunta in producto.preguntas %}
+								{# PREGUNTA con todas sus respuestas #}
+								<div class="card-body border-bottom">
+									<div class="d-flex flex-start align-items-center">
+										<img class="rounded-circle shadow-1-strong me-3" src="{{ asset('/images/' ~ pregunta.user.photo) }}" alt="avatar" width="60" onerror='this.onerror = null; this.src="/images/app/default_Profile.svg"' height="60"/>
+										<div>
+											<h6 class="fw-bold mb-1">{{ pregunta.user.Nombre }}</h6>
+											<p class="text-muted small mb-0">{{ pregunta.fecha|date('Y-m-d H:i') }}</p>
+										</div>
+									</div>
+
+									<input id="inputPregunta{{ pregunta.id }}" class="inputPregunta input-noOutline border-0 mt-3 mb-4 pb-2" value="{{ pregunta.texto }}" readonly/>
+
+									{# Enlace Responder en cada pregunta y BOTONES editar y borrar #}
+									<div class="small d-flex justify-content-start">
+										<a href="#!" class="boton_responder d-flex align-items-center me-3">
+											<i class="fas fa-share me-2"></i>
+											<p id="{{ pregunta.id }}" class="mb-0">Responder</p>
+										</a>
+										{% if (app.user) and (is_granted('ROLE_ADMIN') or (app.user.id == pregunta.user.id)) %} 
+											<button type="button" class="boton_BorrarP border-0 btn mx-2 position-relative">
+												<i  data-id="{{ pregunta.id }}" class="fas fa-trash-alt"></i>
+											</button>
+											<button type="button" class="boton_EditarP border-0 btn mx-2 position-relative">
+												<i  data-id="{{ pregunta.id }}" class="far fa-edit"></i>
+											</button>
+											<button type="button" data-id="{{ pregunta.id }}" class="boton_editarPregunta align-self-end ms-5 btn btn-sm" style="display:none">Editar</button>
+											<div id="path-to-controller-editarPregunta{{ pregunta.id }}" data-href="{{ path('app_user_editarP', {'pregunta': pregunta.id}) }}"></div>
+											<div id="path-to-controller-borrarPregunta{{ pregunta.id }}" data-href="{{ path('app_user_borrarP', {'pregunta': pregunta.id}) }}"></div>
+										{% endif %}
+									</div>
+								
+
+									{# Text area Respuesta - Hidden #}
+									<div id="textAreaPublicar_respuesta{{ pregunta.id }}" class="footer py-3 border-0" style="background-color: #f8f9fa; display:none">
+										<div class="d-flex flex-start w-100 ps-5">
+											<img id="img-profile" class="rounded-circle shadow-1-strong me-3" alt="avatar" width="40" height="40" 
+											{% if app.user is null %} 
+												src="{{ asset('/images/app/default_Profile.svg')}}" 
+											{% else %} 
+												src="{{ asset('/images/' ~ app.user.photo)}}" 
+												onerror='this.onerror = null; this.src="/images/app/default_Profile.svg"' 
+											{% endif %}
+											/>
+											<div class="form-outline w-100">
+												<label class="form-label" for="textAreaRespuesta{{ pregunta.id }}">Escribe tu respuesta:
+												</label>
+												<textarea class="form-control" id="textAreaRespuesta{{ pregunta.id }}" rows="3" style="background: #fff;"></textarea>
+											</div>
+										</div>
+										{# Botón Publicar Respuesta en cada pregunta #}
+										{% if app.user %}
+											<div class="ms-5 my-2 pt-1">
+												<button type="button" id="{{ pregunta.id }}" class="boton_publicarRespuesta ms-5 btn btn-sm">Responder</button>
+											</div>
+											<div id="path-to-controller-publicarRespuesta{{ pregunta.id }}" data-href="{{ path('app_user_publicarR', {'pregunta': pregunta.id}) }}"></div>
+										{% else %}
+											<div class="ms-5 my-2 pt-1">
+												<button type="button" class="ms-5 btn btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">Responder</button>
+											</div>
+										{% endif %}
+									</div>
+
+									{# Imprime todas las RESPUESTAS de Pregunta #}
+									{% for respuesta in pregunta.respuestas %}
+										{# RESPUESTA #}
+										<div class="card-body border-bottom">
+											<div class="d-flex flex-start align-items-center ps-5">
+												<img class="rounded-circle shadow-1-strong me-3" 
+												src="{{ asset('/images/' ~ respuesta.user.photo) }}" 
+												onerror='this.onerror = null; this.src="/images/app/default_Profile.svg"'
+												alt="avatar" width="60" height="60"/>
+												<div>
+													<h6 class="fw-bold mb-1">{{ respuesta.user.Nombre }}</h6>
+													<p class="text-muted small mb-0">{{ respuesta.fecha|date('Y-m-d H:i') }}</p>
+												</div>
+											</div>
+											<input id="inputRespuesta{{ respuesta.id }}" class="inputRespuesta input-noOutline border-0 mt-3 mb-4 ms-5 py-2 ps-5" value="{{ respuesta.texto }}" readonly/>
+
+											{# BOTONES editar y borrar respuesta #}
+											<div class="small d-flex justify-content-start ps-5">
+												{% if (app.user) and (is_granted('ROLE_ADMIN') or (app.user.id == respuesta.user.id)) %} 
+													<button type="button" class="boton_BorrarR border-0 btn mx-2 position-relative">
+														<i data-id="{{ respuesta.id }}" class="fas fa-trash-alt"></i>
+													</button>
+													<button type="button" class="boton_EditarR border-0 btn mx-2 position-relative">
+														<i data-id="{{ respuesta.id }}" class="far fa-edit"></i>
+													</button>
+													<button type="button" data-id="{{ respuesta.id }}" class="boton_editarRespuesta align-self-end ms-5 btn btn-sm" style="display:none">Editar</button>
+													<div id="path-to-controller-editarRespuesta{{ respuesta.id }}" data-href="{{ path('app_user_editarR', {'respuesta': respuesta.id}) }}"></div>
+													<div id="path-to-controller-borrarRespuesta{{ respuesta.id }}" data-href="{{ path('app_user_borrarR', {'respuesta': respuesta.id}) }}"></div>
+												{% endif %}
+											</div>
+										</div>
+									{% else %}
+										<p id="noAnwsers_message" class="text-center">No hay respuestas. Sé el primero en responder</p>
+									{% endfor %}
+								</div>
+
+							{% else %}
+								<p id="noQuestions_message" class="text-center">No hay preguntas. Sé el primero en hacer una</p>
+							{% endfor %}
+
+							{# Text area Pregunta #}
+							<div id="textAreaPublicar" class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+								<div class="d-flex flex-start w-100">
+									<img id="img-profile" class="rounded-circle shadow-1-strong me-3" alt="avatar" width="40" height="40" {% if app.user is null %} src="{{ asset('/images/app/default_Profile.svg')}}" {% else %} src="{{ asset('/images/' ~ app.user.photo)}}" onerror='this.onerror = null; this.src="/images/app/default_Profile.svg"' {% endif %}/>
+									<div class="form-outline w-100">
+										<label class="form-label" for="textAreaPregunta">Escribe tu pregunta:
+										</label>
+										<textarea class="form-control" id="textAreaPregunta" rows="4" style="background: #fff;"></textarea>
+									</div>
+								</div>
+								{# Botón Publicar pregunta #}
+								{% if app.user %}
+									<div class="ms-5 my-2 pt-1">
+										<button type="button" id="publicarPregunta" class="btn btn-sm">Publicar pregunta</button>
+									</div>
+									<div id="path-to-controller-publicarPregunta" data-href="{{ path('app_user_publicarP', {'producto': producto.id}) }}"></div>
+								{% else %}
+									<div class="ms-5 my-2 pt-1">
+										<button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">Publicar pregunta</button>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		{% endblock %}

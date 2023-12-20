@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceso Denegado{% endblock %}
+
+{% block body %}
+
+<div class="container d-flex flex-column text-center mt-5 justify-content-center">
+<h1>Acceso Denegado</h1>
+<img
+    src="{{ asset('/images/app/403.gif') }}"
+    id="imagen_producto"
+    class="img-fluid mx-auto my-5"
+    style="width: 120px"
+    alt="Book"
+/>
+<p>Estás intentando acceder a una página para la que no tienes permisos</p>
+<span>Haz click 
+    <a href="{{ path('app_homepage_index') }}">aquí</a>
+si no eres redirigido en 5 segundos</span>
+
+</div>
+<script>
+    setTimeout(function() { location.replace(location.origin+"/homepage/es")},5000);
+</script>
+
+{% endblock %}
