@@ -8,8 +8,9 @@ parameters:
 
 # default configuration for services in *this* file
 services:
-    App\Service\FileUploader:
+    App\Controller\UserController:
         public: true
+        tags: ['controller.service_arguments']
         arguments:
             $targetDirectory: '%kernel.project_dir%/public/uploads'
     # ...
