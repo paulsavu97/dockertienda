@@ -29,8 +29,8 @@ use Symfony\Bundle\SecurityBundle\Security;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    private $em;
-    private $security;
+    public $em;
+    public $security;
 
     /**
      * @param $em
