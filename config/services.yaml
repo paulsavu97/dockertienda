@@ -10,8 +10,6 @@ parameters:
 services:
     App\Controller\UserController:
         public: true
-        autowire: true
-        autoconfigure: true
         tags: ['controller.service_arguments']
         arguments:
             $em: '@doctrine.orm.entity_manager'
