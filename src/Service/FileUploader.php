@@ -6,15 +6,16 @@ namespace App\Service;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class FileUploader
 {
-    private $targetDirectory;
+    private $params;
     private $slugger;
 
-    public function __construct($targetDirectory, SluggerInterface $slugger)
+    public function __construct(ParameterBagInterface $params, SluggerInterface $slugger)
     {
-        $this->targetDirectory = $targetDirectory;
+        $this->params = $params;
         $this->slugger = $slugger;
     }
 
@@ -35,6 +36,6 @@ class FileUploader
 
     public function getTargetDirectory()
     {
-        return $this->targetDirectory;
+        return $this->params->get('kernel.project_dir').'/public/uploads';
     }
 }

@@ -1,0 +1,50 @@
+Usaamos el comando: docker-compose up -d    Dentro de la carpeta ProyectoVacioDokerizado Mediante este comando estamos configurando
+los 3 dokers (db, php y nginx) y lanzamos los contenedores asociados.
+
+Por otro lado es necesario editar el archivo de hosts para mappear el dominio y podamos acceder a través de él. ej 127.0.0.1 dev.NOMBREdeMIdb.com
+
+Con el comando docker ps vemos los contenedores funcionando
+
+Para acceder al contenedor doker utilizamos el comando: docker exec -it dockertienda-php-1 bash
+
+Se recomienda borrar la carpeta vendor e instalarla de nuevo desde el contendeor docker con el comando composer install
+
+Para configurar nuestro env.local: 
+APP_ENV=dev
+DATABASE_URL=mysql://NOMBREdeMIdb_usr:hola1234@db:3306/NOMBREdeMIdb?serverVersion=6
+
+Después lanzamos un php bin/console doctrine:migrations:migrate para lanzar las migraciones contra la base de datos nueva o 
+php bin/console doctrine:schema:update 
+
+
+Para dar permiso a docker en servidor sudo chmod 666 /var/run/docker.sock
+docker run --name subirexcel_db_1 -e MYSQL_ROOT_PASSWORD=hola -e MYSQL_DATABASE=SubirExcel -e MYSQL_USER=SubirExcel_usr -e MYSQL_PASSWORD=hola1234 -e TIMEZONE=Europe/Madrid 
+
+docker network create --driver bridge --subnet <195.53.214.39> --gateway <gateway> <sitge>
+
+Host: <195.53.214.39>
+Port: <33060>
+User: <root>
+Password: <hola1234>
+
+cambio de turno
+
+-Acceso servidor desarrollo de prueba trastear
+195.53.214.39 y el puerto 45022   
+el usuario es: adminpcm
+la contraeña es: 3lwcI4Csu6#
+
+-Acceso sitge produccion
+sitge.pcmancha.com
+user_paul
+Paul2023.
+
+-Acceso base de datos sitge produccion
+Filezilla
+FTP
+sitge.pcmancha.com sin puerto
+usuario: server
+contraseña: Cw#8mK72IpKR
+
+TOKEN GIT paulsavu97 : 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
+
