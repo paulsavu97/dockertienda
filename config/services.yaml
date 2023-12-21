@@ -10,6 +10,8 @@ parameters:
 services:
     App\Controller\UserController:
         public: true
+        autowire: true
+        autoconfigure: true
         tags: ['controller.service_arguments']
         arguments:
             $targetDirectory: '%kernel.project_dir%/public/uploads'
