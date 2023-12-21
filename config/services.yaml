@@ -14,6 +14,8 @@ services:
         autoconfigure: true
         tags: ['controller.service_arguments']
         arguments:
+            $em: '@doctrine.orm.entity_manager'
+            $security: '@security.helper'
             $targetDirectory: '%kernel.project_dir%/public/uploads'
     # ...
 

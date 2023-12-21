@@ -29,18 +29,21 @@ use Symfony\Bundle\SecurityBundle\Security;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    public $em;
-    public $security;
+    private $em;
+    private $security;
+    private $targetDirectory;
 
     /**
-     * @param $em
+     * @param EntityManagerInterface $em
+     * @param Security $security
+     * @param string $targetDirectory
      */
-    public function __construct(EntityManagerInterface $em, Security $security)
+    public function __construct(EntityManagerInterface $em, Security $security, string $targetDirectory)
     {
         $this->em = $em;
         $this->security = $security;
+        $this->targetDirectory = $targetDirectory;
     }
-
 
     #[Route('/admin', name: 'app_admin_panel')]
     public function panelAdmin(ComprasRepository $comprasRepository, PedidosRepository $pedidosRepository): Response
@@ -81,25 +84,18 @@ class UserController extends AbstractController
     #[Route('/registration', name: 'userRegistration')]
     public function userRegistration(Request $request, UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader): Response
     {
-        $user= new User();
-        $registration_form=$this->createForm(UserType::class, $user);
+        $user = new User();
+        $registration_form = $this->createForm(UserType::class, $user);
         $registration_form->handleRequest($request);
-        if($registration_form->isSubmitted()&&$registration_form->isValid()){
-            $plaintextPassword =$registration_form->get('password')->getData();
-            // hash the password (based on the security.yaml config for the $user class)
-            $hashedPassword = $passwordHasher->hashPassword(
-                $user,
-                $plaintextPassword
-            );
+
+        if ($registration_form->isSubmitted() && $registration_form->isValid()) {
+            $plaintextPassword = $registration_form->get('password')->getData();
+            $hashedPassword = $passwordHasher->hashPassword($user, $plaintextPassword);
 
             $imageFile = $registration_form->get('photo')->getData();
 
-            /*'imagen' field is not required. The image file must be processed only when 
-            a file is uploaded, not every time is edited*/
             if ($imageFile) {
                 $imageFile = $fileUploader->upload($imageFile);
-
-                // updates the 'imagen' property of Producto entity to store the imagen name (not the file)
                 $user->setPhoto($imageFile);
             }
 
@@ -107,8 +103,10 @@ class UserController extends AbstractController
             $user->setRoles(['ROLE_USER']);
             $this->em->persist($user);
             $this->em->flush();
+
             return $this->redirectToRoute('app_homepage_index');
         }
+
         return $this->render('user/index.html.twig', [
             'registration_form' => $registration_form->createView()
         ]);
