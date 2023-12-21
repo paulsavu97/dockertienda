@@ -1,3 +1,6 @@
-controllers:
-    resource: ../src/Controller/
-    type: attribute
+# config/routes.yaml
+app_user_registration:
+    path: '/user/registration'
+    controller: 'App\Controller\UserController::userRegistration'
+    methods: ['GET', 'POST']
+
