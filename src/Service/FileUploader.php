@@ -1,6 +1,6 @@
 <?php
 
-/// src/Service/FileUploader.php
+// src/Service/FileUploader.php
 namespace App\Service;
 
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -12,7 +12,7 @@ class FileUploader
     private $targetDirectory;
     private $slugger;
 
-    public function __construct(string $targetDirectory, SluggerInterface $slugger)
+    public function __construct($targetDirectory, SluggerInterface $slugger)
     {
         $this->targetDirectory = $targetDirectory;
         $this->slugger = $slugger;
