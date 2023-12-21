@@ -29,11 +29,11 @@ class Respuesta implements JsonSerializable
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return array(
             'id' => $this->id,
-            'user'=> $this->user->getNombre(),
+            'user' => $this->user->getNombre(),
             'photo' => $this->user->getPhoto(),
             'texto' => $this->texto,
             'fecha' => $this->fecha,

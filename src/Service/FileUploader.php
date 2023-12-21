@@ -36,6 +36,6 @@ class FileUploader
 
     public function getTargetDirectory()
     {
-        return $this->params->get('kernel.project_dir').'/public/uploads';
+        return $this->params->get('kernel.project_dir').'/public/images';
     }
 }
