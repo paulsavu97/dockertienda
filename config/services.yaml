@@ -9,6 +9,7 @@ parameters:
 # default configuration for services in *this* file
 services:
     App\Service\FileUploader:
+        public: true
         arguments:
             $targetDirectory: '%kernel.project_dir%/public/uploads'
     # ...
