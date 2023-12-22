@@ -348,6 +348,9 @@ footer a:hover {
   .modal-body form {
       margin-top: 20px; /* Puedes ajustar el valor según sea necesario */
   }
+    .modal-content {
+      padding-top: 20px; /* Puedes ajustar el valor según sea necesario */
+  }
 }
 
 /* sidebar*/
