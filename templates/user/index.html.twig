@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!
-{% endblock %}
+{% block title %}Registro de Usuario{% endblock %}
 
 {% block body %}
-	{{ include('comunes/_header.html.twig') }}
-<div class="container">
-	<div class="row d-flex justify-content-center mt-5 pt-5">
-		
-		<div class="col-md-5 mt-5">
-			{{ form(registration_form, {'attr': {'novalidate':'novalidate'}}) }}
-			</div>
-			
-		</div>
-		<p class="mb-5 text-center">¿Ya tienes cuenta?
-			<span class="me-2 text-primary fw-bold text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</span>
-		</p>
-</div>
-	{% endblock %}
+    {{ include('comunes/_header.html.twig') }}
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 bg-light p-4 rounded shadow">
+                <h2 class="text-center mb-4">Registrarse</h2>
+                {{ form_start(registration_form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="mb-3">
+                    {{ form_row(registration_form.email, {'attr': {'class': 'form-control', 'placeholder': 'Correo electrónico'}}) }}
+                    {{ form_errors(registration_form.email) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_row(registration_form.password, {'attr': {'class': 'form-control', 'placeholder': 'Contraseña'}}) }}
+                    {{ form_errors(registration_form.password) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_row(registration_form.photo, {'attr': {'class': 'form-control', 'placeholder': 'Subir foto'}}) }}
+                    {{ form_errors(registration_form.photo) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_row(registration_form.Nombre, {'attr': {'class': 'form-control', 'placeholder': 'Nombre'}}) }}
+                    {{ form_errors(registration_form.Nombre) }}
+                </div>
+
+                <div class="mb-4">
+                    {{ form_row(registration_form.Apellidos, {'attr': {'class': 'form-control', 'placeholder': 'Apellidos'}}) }}
+                    {{ form_errors(registration_form.Apellidos) }}
+                </div>
+
+                <div class="text-center">
+                    {{ form_widget(registration_form.Submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+
+                {{ form_end(registration_form) }}
+                <p class="mt-3 text-center">¿Ya tienes cuenta? <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
