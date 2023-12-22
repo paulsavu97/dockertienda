@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/')]
 class HomepageController extends AbstractController
 {
-    #[Route('/', name: 'index', methods: ['GET'])]
+    #[Route('/', name: 'app_homepage_index', methods: ['GET'])]
     public function index(ProductoRepository $productoRepository): Response
     {
         $productos[] = $productoRepository->findAll_limit8();
