@@ -10,19 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/')]
 class HomepageController extends AbstractController
 {
-    #[Route('/', name: 'index', methods: ['GET'])]
-    public function indexx(ProductoRepository $productoRepository): Response
-    {
-        $productos[] = $productoRepository->findAll_limit8();
-        $productos[] = $productoRepository->findProductsByNovelty();
-        $productos[] = $productoRepository->findProductsByDiscount();
-        $productos[] = $productoRepository->findTopSellingProducts();
-
-        return $this->render('/index.html.twig', [
-            'productos' => $productos,
-        ]);
-    }
-
     #[Route('/homepage/{_locale}', name: 'app_homepage_index', methods: ['GET'], requirements: ['_locale' => 'en|es'])]
     public function index(ProductoRepository $productoRepository): Response
     {
