@@ -4,28 +4,28 @@
 
 {% block body %}
     {{ include('comunes/_header.html.twig') }}
-    <div class="container mt-7 pt-3">
+    <div class="container mt-5 pt-5 mb-5 pb-5" style="overflow-y: auto;">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 bg-light p-4 rounded shadow">
                 <h2 class="text-center mb-4">Registrarse</h2>
                 {{ form_start(registration_form, {'attr': {'novalidate': 'novalidate'}}) }}
 
-                <div class="mb-3">
+                <div class="mb-4">
                     {{ form_row(registration_form.email, {'attr': {'class': 'form-control', 'placeholder': 'Correo electrónico'}}) }}
                     {{ form_errors(registration_form.email) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-4">
                     {{ form_row(registration_form.password, {'attr': {'class': 'form-control', 'placeholder': 'Contraseña'}}) }}
                     {{ form_errors(registration_form.password) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-4">
                     {{ form_row(registration_form.photo, {'attr': {'class': 'form-control', 'placeholder': 'Subir foto'}}) }}
                     {{ form_errors(registration_form.photo) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-4">
                     {{ form_row(registration_form.Nombre, {'attr': {'class': 'form-control', 'placeholder': 'Nombre'}}) }}
                     {{ form_errors(registration_form.Nombre) }}
                 </div>
@@ -40,7 +40,7 @@
                 </div>
 
                 {{ form_end(registration_form) }}
-                <p class="mt-3 text-center">¿Ya tienes cuenta? <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</a></p>
+                <p class="mt-5 text-center">¿Ya tienes cuenta? <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</a></p>
             </div>
         </div>
     </div>
