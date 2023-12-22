@@ -344,15 +344,6 @@ footer a:hover {
   }
 }
 
-@media (max-width: 767px) {
-  .modal-body form {
-      margin-top: 20px; /* Puedes ajustar el valor según sea necesario */
-  }
-    .modal-content {
-      padding-top: 20px; /* Puedes ajustar el valor según sea necesario */
-  }
-}
-
 /* sidebar*/
 .sidebar .navbar-admin .navbar-nav .nav-link {
   padding: 9px 20px;
