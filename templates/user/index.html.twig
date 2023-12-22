@@ -6,8 +6,8 @@
     {{ include('comunes/_header.html.twig') }}
     <div class="container mt-5 pt-5 mb-5 pb-5" style="overflow-y: auto;">
         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6 bg-light p-4 rounded shadow">
-                <h2 class="text-center mb-4">Registrarse</h2>
+            <div class="col-md-8 col-lg-6 bg-light p-5 rounded shadow mt-5"> <!-- Añadí un margen superior al encabezado -->
+                <h2 class="text-center mb-5">Registrarse</h2>
                 {{ form_start(registration_form, {'attr': {'novalidate': 'novalidate'}}) }}
 
                 <div class="mb-4">
@@ -40,7 +40,7 @@
                 </div>
 
                 {{ form_end(registration_form) }}
-                <p class="mt-5 text-center">¿Ya tienes cuenta? <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</a></p>
+                <p class="mt-4 text-center">¿Ya tienes cuenta? <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</a></p>
             </div>
         </div>
     </div>
