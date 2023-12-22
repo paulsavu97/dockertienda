@@ -21,40 +21,28 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email',EmailType::class, [
-                "label" => "Email",
-                "required" => true,
-                /* "error_bubbling" => true, */ //Permite que los errores aparezcan arriba del formulario
-                "constraints" => [
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'required' => true,
+                'constraints' => [
                     new NotBlank(),
-                    /* new UniqueEmail([ "message" => "INCORRECTO"]), */
+                    // Agrega tus restricciones personalizadas si las tienes
                 ]
             ])
             ->add('password', PasswordType::class, [
-                'hash_property_path' => 'password',
                 'mapped' => false,
-                "constraints" => [
+                'constraints' => [
                     new NotBlank(),
                     new Regex([
                         'pattern' => '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/',
-                        'match'   => true,
                         'message' => 'La contraseña no es válida. Debe contener al menos 8 caracteres: un número, una letra mayúscula y una letra minúscula.'
                     ])
                 ]
             ])
-            ->add('photo', FileType::class, 
-            [
+            ->add('photo', FileType::class, [
                 'label' => 'Imagen de perfil',
-
-                // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
-
-                // make it optional so you don't have to re-upload the PDF file
-                // every time you edit the Product details
                 'required' => false,
-
-                // unmapped fields can't define their validation using annotations
-                // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',
@@ -69,9 +57,9 @@ class UserType extends AbstractType
                 ],
             ])
             ->add('Nombre', TextType::class, [
-                "label" => "Nombre",
-                "required" => true,
-                "constraints" => [
+                'label' => 'Nombre',
+                'required' => true,
+                'constraints' => [
                     new NotBlank(),
                     new Length([
                         'min' => 3,
@@ -79,15 +67,14 @@ class UserType extends AbstractType
                     ]),
                     new Regex([
                         'pattern' => '/^[a-zA-Z]+$/',
-                        'match'   => true,
                         'message' => 'Solo mayúsculas y minúsculas permitidos.'
                     ])
                 ]
             ])
             ->add('Apellidos', TextType::class, [
-                "label" => "Apellidos",
-                "required" => true,
-                "constraints" => [
+                'label' => 'Apellidos',
+                'required' => true,
+                'constraints' => [
                     new NotBlank(),
                     new Length([
                         'min' => 3,
@@ -95,12 +82,11 @@ class UserType extends AbstractType
                     ]),
                     new Regex([
                         'pattern' => '/^[a-zA-Z]+$/',
-                        'match'   => true,
                         'message' => 'Solo mayúsculas y minúsculas permitidos.'
                     ])
                 ]
             ])
-            ->add('Submit', SubmitType::class)
+            ->add('Submit', SubmitType::class, ['label' => 'Registrarse'])
         ;
     }
 

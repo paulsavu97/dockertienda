@@ -1,0 +1,52 @@
+# translations for the 'es' (Spanish) locale
+es:
+
+  app:
+    # Navbar
+    ZENGLOW: 'ZENGLOW'
+
+    # Menu Items
+    Catálogo Productos: 'Catálogo Productos'
+    Sobre Nosotros: 'Sobre Nosotros'
+    Contacto: 'Contacto'
+    Administrar: 'Administrar'
+    Regístrate: 'Regístrate'
+    Iniciar Sesión: 'Iniciar Sesión'
+    Español: 'Español'
+    English: 'English'
+
+    # Modal de búsqueda
+    Busca producto ...: 'Busca producto ...'
+
+    # Modal de inicio de sesión
+    Inicia Sesión: 'Inicia Sesión'
+    Email: 'Email'
+    Password: 'Contraseña'
+    Login: 'Login'
+    ¿No tienes cuenta?: '¿No tienes cuenta?'
+
+# translations for the 'en' (English) locale
+en:
+  app:
+    # Navbar
+    ZENGLOW: 'ZENGLOW'
+
+    # Menu Items
+    Catálogo Productos: 'Product Catalog'
+    Sobre Nosotros: 'About Us'
+    Contacto: 'Contact'
+    Administrar: 'Administrate'
+    Regístrate: 'Sign Up'
+    Iniciar Sesión: 'Log In'
+    Español: 'Spanish'
+    English: 'English'
+
+    # Modal de búsqueda
+    Busca producto ...: 'Search for product ...'
+
+    # Modal de inicio de sesión
+    Inicia Sesión: 'Log In'
+    Email: 'Email'
+    Password: 'Password'
+    Login: 'Login'
+    ¿No tienes cuenta?: 'Dont have an account?'

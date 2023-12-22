@@ -41,6 +41,12 @@
         {% endblock %}
     </head>
     <body>  
+        <div 
+            id="language-selector">
+            <a href="{{ path('cambiar_idioma', {'_locale': 'en', 'ruta': app.request.attributes.get('_route')}) }}">English</a>
+            |
+            <a href="{{ path('cambiar_idioma', {'_locale': 'es', 'ruta': app.request.attributes.get('_route')}) }}">Español</a>
+        </div>
         {% block body %}{% endblock %}
     </body>
 </html>
