@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('')]
 class HomepageController extends AbstractController
 {
-    #[Route('/', name: 'app_homepage_redirect')]
+    #[Route('', name: 'app_homepage_redirect')]
     public function redirectToHomepage(): Response
     {
         // Redirigir a la página /homepage/es
