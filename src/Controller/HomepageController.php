@@ -4,12 +4,19 @@ namespace App\Controller;
 
 use App\Repository\ProductoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('')]
 class HomepageController extends AbstractController
 {
+    #[Route('/', name: 'app_homepage_redirect')]
+    public function redirectToHomepage(): Response
+    {
+        // Redirigir a la página /homepage/es
+        return new RedirectResponse($this->generateUrl('app_homepage_index', ['_locale' => 'es']));
+    }
 
     #[Route('/homepage/{_locale}', name: 'app_homepage_index', methods: ['GET'], requirements: ['_locale' => 'en|es'])]
     public function index(ProductoRepository $productoRepository): Response
