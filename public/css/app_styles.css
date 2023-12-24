@@ -159,6 +159,10 @@ footer a:hover {
 .filter-button-group .btn:hover {
   color: #fff !important;
 }
+.custom-btn {
+  color: white;
+  font-family: 'TuTipoDeLetra', sans-serif; /* Reemplaza 'TuTipoDeLetra' con la fuente que desees utilizar */
+}
 .collection-img span {
   top: 20px;
   right: 20px;
