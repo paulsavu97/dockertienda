@@ -30,3 +30,8 @@ paypal_success_payment:
     path: '/paypal/success-payment'
     controller: 'App\Controller\PaypalController::successPayment'
     methods: ['GET']
+
+# config/routes.yaml
+contact_form_submit:
+    path: '/submit_contact_form'
+    controller: 'App\Controller\ContactController::submitForm'

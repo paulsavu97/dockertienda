@@ -14,7 +14,7 @@
             <p class="mb-4">
               {{ 'Para una respuesta más ágil y rápida de nuestro equipo de atención al cliente, disponemos de este formulario de contacto cuya bandeja de entrada es consultada diariamente. Recuerda que hacemos envíos gratis en la zona de Quintanar de la Orden'|trans }}
             </p>
-            <form>
+            <form action="{{ path('contact_form_submit') }}" method="post">
               <div class="row g-3">
                 <div class="col-md-6">
                   <div class="form-floating">
@@ -22,6 +22,7 @@
                       type="text"
                       class="form-control"
                       id="name"
+                      name="name"  
                       placeholder="Your Name"
                     />
                     <label for="name">{{ 'Nombre'|trans }}</label>
@@ -33,6 +34,7 @@
                       type="email"
                       class="form-control"
                       id="email"
+                      name="email"  
                       placeholder="Your Email"
                     />
                     <label for="email">{{ 'Email'|trans }}</label>
@@ -44,6 +46,7 @@
                       type="text"
                       class="form-control"
                       id="subject"
+                      name="subject"  
                       placeholder="Subject"
                     />
                     <label for="subject">{{ 'Título'|trans }}</label>
@@ -53,6 +56,7 @@
                   <div class="form-floating">
                     <textarea
                       class="form-control"
+                      name="message"  
                       placeholder="Leave a message here"
                       id="message"
                       style="height: 100px"
