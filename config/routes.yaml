@@ -13,3 +13,20 @@ cambiar_idioma:
     methods: ['GET', 'POST']
     requirements:
         _locale: en|es
+
+paypal_create_payment:
+    path: '/paypal/create-payment'
+    controller: 'App\Controller\PaypalController::createPayment'
+
+paypal_execute_payment:
+    path: '/paypal/execute-payment'
+    controller: 'App\Controller\PaypalController::executePayment'
+
+paypal_cancel_payment:
+    path: '/paypal/cancel-payment'
+    controller: 'App\Controller\PaypalController::cancelPayment'
+
+paypal_success_payment:
+    path: '/paypal/success-payment'
+    controller: 'App\Controller\PaypalController::successPayment'
+    methods: ['GET']

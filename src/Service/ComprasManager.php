@@ -27,15 +27,15 @@ class ComprasManager
     }
 
 
-    public function crearNuevoPedido(Pedidos $pedido, User $usuario): Pedidos
+    public function crearNuevoPedido(User $usuario): Pedidos
     { 
         $pedido = new Pedidos();
         $fecha = new \DateTime('@'.strtotime('now'));
         $pedido->setDireccion("direccion default");
         $pedido->setFecha($fecha);
-        $pedido->setIdUsuario($usuario);
+        $pedido->setIdUsuario($usuario);  // Aquí se utiliza la variable $usuario proporcionada como parámetro
         $this->pedidosRepository->save($pedido, true);
-
+    
         return $pedido;
     }
 

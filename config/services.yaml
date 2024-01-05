@@ -4,8 +4,16 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    paypal_client_id: 'AZx5P-s-4_K-ySnSsM49_4u8aRFLsMqLT3uUKyAi8TvLBUSlWc12z5uSuEl4yALbBFwWozBQQj9WTy88'
+    paypal_secret: 'ECvU5QN8hNBcN4Ecw1qRoLzj9UJGklzpxAz6D5yLgcAEGaTsZeYqQIs4IUZDKvZIaMLSBpwTeUqcqMTh'
 
 services:
+    App\Service\CarritoManager:
+        arguments:
+            $requestStack: '@request_stack'
+            $paypalClientId: '%env(PAYPAL_CLIENT_ID)%'
+            $paypalSecret: '%env(PAYPAL_SECRET)%'
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error de Pago - ZENGLOW{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h1 class="display-4 text-danger">Error de Pago</h1>
+                <p class="lead">Lo sentimos, ha ocurrido un error durante el proceso de pago.</p>
+                <p class="text-muted">{{ error }}</p>
+                <hr class="my-4">
+                <p>Por favor, verifica la información de pago e intenta nuevamente.</p>
+                <a class="btn btn-primary btn-lg" href="{{ path('app_carrito') }}" role="button">Volver al Carrito</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

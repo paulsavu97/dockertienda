@@ -32,6 +32,7 @@
 
 body {
   font-family: var(--sm-font);
+  margin: 0;
 }
 
 .title {
@@ -185,6 +186,16 @@ footer a:hover {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
+}
+
+#paypal-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0; /* Elimina márgenes no deseados */
+  padding: 0; /* Elimina relleno no deseado */
 }
 
 /* offers */

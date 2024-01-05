@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pago Exitoso - ZENGLOW{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h1 class="display-4 text-success">¡Pago Realizado Con Exito!</h1>
+                <p class="lead">Gracias por su compra. Tu pago ha sido procesado con éxito.</p>
+                <hr class="my-4">
+                <p>Puedes revisar los detalles de tu compra en tu historial de pedidos.</p>
+                <a class="btn btn-primary btn-lg" href="{{ path('app_homepage_index') }}" role="button">Volver a la Página Principal</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

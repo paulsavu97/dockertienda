@@ -1,0 +1,30 @@
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .paypal-buttons-container {
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 5px; /* Redujimos el margen inferior */
+        }
+
+     a {
+            align-self: flex-start; /* Alineamos el enlace a la izquierda */
+            margin-bottom: 10px; /* Añadimos un espacio en la parte inferior */
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000102;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #000000;
+        }
+    

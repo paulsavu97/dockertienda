@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pago Cancelado - ZENGLOW{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h1 class="display-4 text-warning">Pago Cancelado</h1>
+                <p class="lead">La transacción de pago ha sido cancelada.</p>
+                <hr class="my-4">
+                <p>Si deseas realizar tu compra, puedes volver al carrito y completar el proceso de pago.</p>
+                <a class="btn btn-primary btn-lg" href="{{ path('app_carrito') }}" role="button">Volver al Carrito</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
